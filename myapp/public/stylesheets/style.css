@@ -1,0 +1,18 @@
+h1{
+  color: darkred;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 25px; 
+}
+table{
+  background:yellow; 
+  font-family: fantasy;
+  text-align: center;
+}
+#img{
+  height: 250px;
+  width: 300px;
+}
+#img{
+  height: 250px;
+  width: 300px;
+} 

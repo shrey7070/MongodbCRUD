@@ -1,0 +1,61 @@
+<%- include('index'); -%>
+<head>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<h1>Registration</h1>
+<form method="POST" action="/Register-process" enctype="multipart/form-data">  
+<table border="1.5px" cellpadding="2 px">
+    <tr>
+        <td>NAME</td>
+        <td><input type="text" name="user_name" placeholder="Enter Name" required></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><input type="email" name="user_email" placeholder="Enter E-mail" required></td>
+    </tr>
+    <tr>
+        <td>Contact</td>
+        <td><input type="text" name="user_mobile" placeholder="Enter Contact" required></td>
+    </tr>
+    <tr>
+        <td>File</td>
+        <td><input type="file" name="user_file"></td>
+    </tr>
+    <tr>
+            <td colspan="2">
+                    <a href="/home"><input type="button" value="BACK"></a>&nbsp;&nbsp;<input type="submit" value="SUBMIT"></td>
+            </td>
+    </tr>
+</table>
+</form>
+</body>
+<%  if(user.length>0) { %>
+<h1 align="center">Data Display</h1>
+<table align="center" border="1px">
+    <tr>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>File</th>
+        <th>Options</th>
+    </tr>
+    <%  for(var i=0;i<user.length;i++) { %>
+        <tr>
+            <td><%= i+1%></td>
+            <td><%= user[i].user_name   %></td>
+            <td><%= user[i].user_email  %></td>
+            <td><%= user[i].user_mobile %></td>
+            <td><img id="img"src="/upload/<%= user[i].user_file %>" alt="" ></td>
+            <td>
+                    <a href='/redit/<%= user[i]._id  %>'>Edit</a>
+                    <a href='/delete/<%= user[i]._id  %>'>Delete</a>
+                    <a href='/show/<%= user[i]._id  %>'>show</a>
+            </td>
+        </tr>
+        <% } %>
+</table>
+<%} else {%>
+    No Records Found
+<% } %>

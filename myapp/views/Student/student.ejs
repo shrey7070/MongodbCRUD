@@ -1,0 +1,62 @@
+<%- include('index'); -%>
+<head>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    </head>
+    <h1>Fill your Student data</h1>
+<form method="POST" action="/student_process" ref="uploadForm" id="uploadForm" enctype="multipart/form-data">
+    <table border="1.5px" cellpadding="2 px">
+        <tr>
+            <th>NAME</th>
+            <th>Details</th>
+        </tr>
+        <tr>
+            <td>Firstname:</td>
+            <td><input type="text" name="fname" placeholder="Enter Firstname"required></td>
+        </tr>
+        <tr>
+            <td>Lastname:</td>
+            <td><input type="text" name="lname" placeholder="Enter Lastname"required></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="file" name="flname" required></td>
+        </tr>
+        <tr>
+                <td colspan="2">
+                        <a href="/home"><input type="button" value="BACK"></a>&nbsp;&nbsp;<input type="submit" value="SUBMIT"></td>
+                </td>
+        </tr>
+        
+    </table>
+</form>
+
+
+<%  if(user.length>0)   {  %>
+
+    <h1 align="center">Data Display</h1>
+    <table border="1px" align="center">
+        <tr>
+            <th>Index</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>File</th>
+            <th>Action</th>
+            
+        </tr>
+        <%  for(var i=0;i<user.length;i++) { %>
+            <tr>
+                <td><%= i+1%></td>
+                <td><%= user[i].fname    %></td>
+                <td><%= user[i].lname   %></td>
+                <td><img id="img" src="/upload/<%=user[i].flname %>" alt="<%=user[i].flname%>"></td>
+                <td>
+                    <a href='/edit/<%= user[i]._id  %>'>Edit</a>
+                    <a href='/deletestudent/<%= user[i]._id  %>'>Delete</a>
+                    <a href='/showstudent/<%= user[i]._id  %>'>Show</a>
+                </td>
+            </tr>
+            <% } %>
+    
+    </table>
+    <%} else {%>
+        No Records Found
+    <%  }   %>
